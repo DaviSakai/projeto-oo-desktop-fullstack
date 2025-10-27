@@ -65,7 +65,7 @@ Tudo isso com uma interface web estática integrada ao backend **FastAPI**.
 ---
 
 ## 🚀 Como Executar o Projeto
-
+```bash
 ### 1️⃣ Clone o repositório
 ```bash
 git clone https://github.com/DaviSakai/projeto-oo-desktop-fullstack.git
@@ -83,3 +83,4 @@ uvicorn main:app --reload
 
 ###5️⃣ Acesse no navegador
 👉 http://127.0.0.1:8000/
+```
