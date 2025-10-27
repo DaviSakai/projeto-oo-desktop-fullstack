@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Loja — MVC • CRUD + Checkout</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<!-- Modal: Selecionar produtos disponíveis para este carrinho -->
+<div id="picker" class="modal">
+    <div class="card" style="max-width:820px;width:100%">
+      <div class="card-head">
+        <span id="picker-title">Produtos disponíveis</span>
+        <button id="picker-close" class="icon">✕</button>
+      </div>
+  
+      <div id="picker-list" class="grid"></div>
+  
+      <div class="row right" style="margin-top:12px">
+        <button id="picker-done" class="ghost">Concluir</button>
+      </div>
+    </div>
+  </div>
+  <!-- Modal: Produtos disponíveis (só abre quando clicar em Criar Carrinho) -->
+<div id="picker" class="modal">
+    <div class="panel">
+      <div class="panel-head">
+        <span id="picker-title">Produtos disponíveis</span>
+        <button id="picker-close" class="icon" aria-label="Fechar">✕</button>
+      </div>
+  
+      <div id="picker-list" class="grid"></div>
+  
+      <div class="panel-foot">
+        <button id="picker-done" class="ghost">Concluir</button>
+      </div>
+    </div>
+  </div>
+  
+<!-- Modal: Produtos disponíveis (apenas ao criar carrinho) -->
+<div id="picker" class="modal">
+    <div class="panel">
+      <div class="panel-head">
+        <span id="picker-title">Produtos disponíveis</span>
+        <button id="picker-close" class="icon" aria-label="Fechar">✕</button>
+      </div>
+  
+      <div id="picker-list" class="grid"></div>
+  
+      <div class="panel-foot">
+        <button id="picker-done" class="ghost">Concluir</button>
+      </div>
+    </div>
+  </div>
+  <!-- Modal: Produtos disponíveis (abre ao criar carrinho) -->
+<div id="picker" class="modal">
+    <div class="panel">
+      <div class="panel-head">
+        <h3 id="picker-title">Produtos disponíveis</h3>
+        <button id="picker-close" class="icon" aria-label="Fechar">✕</button>
+      </div>
+  
+      <div class="panel-body">
+        <div id="picker-list" class="grid"></div>
+      </div>
+  
+      <div class="panel-foot">
+        <button id="picker-done" class="ghost">Concluir</button>
+      </div>
+    </div>
+  </div>
+  
+<body>
+<div class="container">
+  <header class="hero">
+    <h1 class="brand">Loja MVC</h1>
+    <p class="subtitle">Model / View / Controller</p>
+  </header>
+
+  <div class="section">
+    <h2>Administrador</h2>
+    <div class="row">
+      <input name="a_nome" placeholder="Nome" />
+      <input name="a_user" placeholder="Username" />
+      <input name="a_pass" placeholder="Senha" />
+      <button id="btnAdmin">Criar Admin</button>
+      <span class="muted" id="loginStatus"></span>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Cliente</h2>
+    <div class="row">
+      <input name="c_nome" placeholder="Nome" />
+      <input name="c_email" type="email" placeholder="Email" />
+      <input name="c_end" placeholder="Endereço" />
+      <button id="btnCliente">Criar Cliente</button>
+    </div>
+    <div class="row">
+      <input name="cid" placeholder="Cliente ID p/ criar carrinho" />
+      <button class="ghost" id="btnCarrinho">Criar Carrinho</button>
+    </div>
+    <div class="list" id="clientes"></div>
+  </div>
+
+  <div class="section">
+    <div class="section-header">
+      <h2>Produtos</h2>
+      <div class="row">
+        <input name="p_nome" placeholder="Nome" />
+        <input name="p_desc" placeholder="Descrição" />
+        <input name="p_preco" type="number" step="0.01" placeholder="Preço" />
+        <input name="p_estoque" type="number" placeholder="Estoque" />
+        <button id="btnProduto">Cadastrar</button>
+      </div>
+    </div>
+    <div id="grid-produtos" class="grid"></div>
+  </div>
+
+  <div class="section">
+    <h2>Carrinhos</h2>
+    <div id="carrinhos" class="list"></div>
+  </div>
+
+  <div class="section">
+    <h2>Checkout</h2>
+    <div class="row">
+      <input name="car_id" placeholder="Carrinho ID" />
+      <input name="dest" placeholder="Destinatário" />
+      <input name="end" placeholder="Endereço" />
+      <input name="cep" placeholder="CEP" />
+      <select name="met">
+        <option>PAC</option>
+        <option>SEDEX</option>
+        <option>Retirada</option>
+        <option>Entrega Express</option>
+      </select>
+      <input name="frete" type="number" step="0.01" placeholder="Custo frete" />
+      <input name="prazo" type="number" placeholder="Prazo (dias)" />
+      <button id="btnCheckout">Finalizar Pedido</button>
+    </div>
+    <div id="pedidosBox" class="list"></div>
+  </div>
+</div>
+
+
+<script src="app.js"></script>
+</body>
+</html>
