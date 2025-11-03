@@ -98,6 +98,8 @@ projeto-oo-desktop-fullstack/
 ```
 
 ## 💾 Banco de Dados JSON
+
+```bash
 data/
 ├── users.json     → usuários registrados
 └── sessions.json  → tokens de sessão ativos
