@@ -95,14 +95,20 @@ projeto-oo-desktop-fullstack/
 ├── data/               # Banco de dados JSON (users.json, sessions.json)
 ├── main.py             # Arquivo principal (FastAPI app)
 └── config.py           # Configurações de diretórios e paths
+```
 
-##💾 Banco de Dados JSON
+## 💾 Banco de Dados JSON
 data/
 ├── users.json     → usuários registrados
 └── sessions.json  → tokens de sessão ativos
 
 
-##🚀 Como Executar o Projeto
+
+---
+
+## 🚀 Como Executar o Projeto
+
+```bash
 # 1️⃣ Clone o repositório
 git clone https://github.com/DaviSakai/projeto-oo-desktop-fullstack.git
 cd projeto-oo-desktop-fullstack
@@ -119,11 +125,14 @@ uvicorn main:app --reload
 
 # 5️⃣ Acesse no navegador
 http://127.0.0.1:8000/
+```
 
-##🌐 Acesso Rápido
+## 🌐 Acesso Rápido
+```bash
 
 📄 Documentação Swagger: http://127.0.0.1:8000/docs
 
 🔐 Tela de Login: http://127.0.0.1:8000/
 
 🛍️ Painel Administrativo (View): http://127.0.0.1:8000/app
+```
