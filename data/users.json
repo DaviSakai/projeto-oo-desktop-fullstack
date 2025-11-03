@@ -1,0 +1,18 @@
+{
+  "seq": 3,
+  "users": [
+    {
+      "id": 1
+    },
+    {
+      "id": 2
+    },
+    {
+      "id": 3,
+      "name": "usuario1",
+      "email": "usuario1@gmail.com",
+      "password_hash": "pbkdf2$390000$aa1cc4dbdf0b288c4eeb8c0123fe16ae$0b361b7124bbb5511429ef2d329a3f84859824084865847734a51dd7d1f6924d",
+      "is_active": true
+    }
+  ]
+}

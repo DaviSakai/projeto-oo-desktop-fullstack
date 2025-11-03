@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Entrar | Kelaryz Desk</title>
+  <meta name="color-scheme" content="light dark">
+  <style>
+    :root{
+      --kel-primary:#0b81b3; --kel-primary-600:#096792; --kel-accent:#FFD65C;
+      --kel-bg:#0a1722; --kel-card:#0f2230; --kel-text:#eaf5ff; --kel-muted:#b9cce0;
+      --ring:0 0 0 3px color-mix(in oklab, var(--kel-primary) 30%, transparent);
+    }
+    @media (prefers-color-scheme: light){
+      :root{ --kel-bg:#f6fbff; --kel-card:#ffffff; --kel-text:#0f2230; --kel-muted:#3a5166; }
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; min-height:100dvh; display:grid; place-items:center;
+      background:radial-gradient(60rem 60rem at 20% -10%, #1a3b52 0%, transparent 55%),
+                 radial-gradient(60rem 60rem at 120% 10%, #09324a 0%, transparent 55%),
+                 var(--kel-bg);
+      font:500 15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Inter,Arial,sans-serif;
+      color:var(--kel-text);
+    }
+    .container{ width:min(960px,100%); padding:28px; display:grid; gap:28px; grid-template-columns:1.05fr .95fr; align-items:stretch }
+    @media (max-width: 940px){ .container{ grid-template-columns:1fr; gap:22px } }
+
+    .brand{
+      position:relative; overflow:hidden; border-radius:24px; padding:32px;
+      background:linear-gradient(180deg, color-mix(in oklab, var(--kel-primary) 35%, transparent), transparent 55%),
+                 linear-gradient(135deg, rgba(255,214,92,.10), transparent 60%),
+                 var(--kel-card);
+      box-shadow:0 24px 60px rgba(0,0,0,.25);
+    }
+    .logo{ display:flex; align-items:center; gap:10px; margin-bottom:12px }
+    .logo .mark{ width:36px; height:36px; border-radius:10px;
+      background: radial-gradient(12px 12px at 65% 35%, var(--kel-accent), transparent 60%),
+                  linear-gradient(135deg, color-mix(in oklab, var(--kel-primary) 35%, #08334b), #0a1722) }
+    .logo b{ font-size:18px; letter-spacing:.3px }
+    .brand h1{font-size:34px; margin:0 0 6px; letter-spacing:.4px}
+    .brand p{margin:8px 0 0; color:var(--kel-muted)}
+    .app-desc{ display:block; margin-top:12px; padding:10px 14px; border-radius:12px;
+      background: color-mix(in oklab, var(--kel-card) 85%, transparent); color:var(--kel-muted); font-size:14px }
+
+    .card{ border-radius:24px; padding:26px; background:var(--kel-card); box-shadow:0 18px 50px rgba(0,0,0,.18) }
+    form{ display:grid; gap:12px }
+    .input{ display:flex; gap:8px; align-items:center; background:color-mix(in oklab, var(--kel-card) 88%, #fff 12%);
+      border:1px solid color-mix(in oklab, var(--kel-card) 70%, #fff 30%); border-radius:12px; padding:10px 12px }
+    .input:focus-within{ border-color:var(--kel-primary); box-shadow:var(--ring) }
+    input{ flex:1; border:0; background:transparent; color:inherit; font:inherit }
+    input::placeholder{ color:color-mix(in oklab, var(--kel-muted) 70%, transparent) }
+
+    .btn{ appearance:none; border:0; border-radius:12px; padding:12px 16px; font-weight:800; cursor:pointer;
+          display:inline-flex; align-items:center; justify-content:center; gap:10px }
+    .btn-primary{ background:linear-gradient(180deg, color-mix(in oklab, var(--kel-primary) 80%, #fff 0%), var(--kel-primary-600));
+      color:white; box-shadow:0 10px 30px color-mix(in oklab, var(--kel-primary) 40%, transparent) }
+    .btn-ghost{ background: color-mix(in oklab, var(--kel-card) 90%, white 10%); color:var(--kel-text) }
+    .hint{ font-size:12px; color:var(--kel-muted) }
+    .msg{ min-height:1.25em; font-size:13px; margin-top:4px }
+    .msg.ok{ color:#19c37d } .msg.err{ color:#ff4455 }
+    .hidden{ display:none }
+    .footer{ display:flex; justify-content:space-between; margin-top:2px; color:var(--kel-muted); font-size:12px }
+  </style>
+</head>
+<body>
+  <main class="container" aria-label="Autenticação Kelaryz Desk">
+    <!-- Branding -->
+    <section class="brand">
+      <div class="logo"><div class="mark" aria-hidden="true"></div><b>Kelaryz Desk</b></div>
+      <h1>Bem-vindo(a) ao Kelaryz Desk</h1>
+      <p>Entre para acessar o painel administrativo, gerenciar produtos e acompanhar relatórios do sistema.</p>
+      <span class="app-desc">Painel administrativo para empresas: centralize operações, otimize processos e tome decisões com dados confiáveis em tempo real.</span>
+    </section>
+
+    <!-- Card -->
+    <section class="card" aria-label="Acessar conta Kelaryz Desk">
+      <!-- LOGIN (padrão) -->
+      <form id="formLogin" autocomplete="on">
+        <h2 style="margin:0 0 4px">Entrar</h2>
+        <div class="input"><input id="lemail" name="email" type="email" placeholder="seu@email.com" required /></div>
+        <div class="input"><input id="lpass" name="password" type="password" placeholder="Sua senha" minlength="6" required /></div>
+        <button class="btn btn-primary" type="submit" id="btnLogin">Entrar</button>
+        <div id="lmsg" class="msg" aria-live="polite"></div>
+        <div class="footer">
+          <span class="hint">Não possui uma conta?</span>
+          <a class="hint" href="#" id="goRegister">Criar conta</a>
+        </div>
+      </form>
+
+      <!-- CADASTRO (aparece só quando solicitar) -->
+      <form id="formRegister" class="hidden" autocomplete="on">
+        <h2 style="margin:0 0 4px">Criar conta</h2>
+        <div class="input"><input id="rname" name="name" type="text" placeholder="Seu nome" required /></div>
+        <div class="input"><input id="remail" name="email" type="email" placeholder="seu@email.com" required /></div>
+        <div class="input"><input id="rpass" name="password" type="password" placeholder="Crie uma senha (min. 6)" minlength="6" required /></div>
+        <button class="btn btn-primary" type="submit" id="btnRegister">Criar conta</button>
+        <div id="rmsg" class="msg" aria-live="polite"></div>
+        <div class="footer">
+          <span class="hint">Já possui uma conta?</span>
+          <a class="hint" href="#" id="goLogin">Entrar</a>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <script>
+    // Helpers
+    const $ = (s)=>document.querySelector(s);
+    const show = (el)=>el.classList.remove('hidden');
+    const hide = (el)=>el.classList.add('hidden');
+    const setMsg = (el, txt, ok=false)=>{ el.textContent = txt||''; el.className = 'msg ' + (ok?'ok':'err'); };
+
+    // Elementos
+    const formLogin = $('#formLogin');
+    const formRegister = $('#formRegister');
+    const lmsg = $('#lmsg'), rmsg = $('#rmsg');
+
+    // Alternância Login <-> Cadastro
+    $('#goRegister').addEventListener('click', (e)=>{ e.preventDefault(); hide(formLogin); show(formRegister); rmsg.textContent=''; lmsg.textContent=''; });
+    $('#goLogin').addEventListener('click', (e)=>{ e.preventDefault(); hide(formRegister); show(formLogin); lmsg.textContent=''; rmsg.textContent=''; });
+
+    // POST utilitário
+    async function postJSON(url, payload){
+      const res = await fetch(url, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload) });
+      let data = null; try{ data = await res.json(); }catch(e){}
+      if(!res.ok){ throw new Error((data && data.detail) || res.statusText || 'Erro'); }
+      return data || {};
+    }
+
+    // LOGIN
+    formLogin.addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      lmsg.className='msg'; lmsg.textContent='';
+      const email = $('#lemail').value.trim();
+      const password = $('#lpass').value;
+      try{
+        const data = await postJSON('/auth/login', { email, password });
+        setMsg(lmsg, `Olá, ${data.user.name}! Sessão ativa.`, true);
+        // redireciona para sua aplicação (ajuste se preferir outra rota)
+        setTimeout(()=>{ window.location.href = '/app'; }, 600);
+      }catch(err){ setMsg(lmsg, err.message || 'Falha no login'); }
+    });
+
+    // CADASTRO
+    formRegister.addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      rmsg.className='msg'; rmsg.textContent='';
+      const name = $('#rname').value.trim();
+      const email = $('#remail').value.trim();
+      const password = $('#rpass').value;
+      if(password.length < 6){ setMsg(rmsg, 'Senha muito curta (min. 6)'); return; }
+      try{
+        await postJSON('/auth/register', { name, email, password });
+        // Volta ao login com instrução clara
+        hide(formRegister); show(formLogin);
+        $('#lemail').value = email; $('#lpass').value = '';
+        setMsg(lmsg, 'Conta criada! Use o e-mail e a senha cadastrados para entrar.', true);
+        $('#lpass').focus();
+      }catch(err){ setMsg(rmsg, err.message || 'Falha no cadastro'); }
+    });
+  </script>
+</body>
+</html>
