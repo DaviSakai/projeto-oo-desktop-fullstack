@@ -103,7 +103,7 @@ projeto-oo-desktop-fullstack/
 data/
 ├── users.json     → usuários registrados
 └── sessions.json  → tokens de sessão ativos
-
+```
 
 
 ---
